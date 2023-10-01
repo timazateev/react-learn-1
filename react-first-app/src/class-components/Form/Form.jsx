@@ -25,8 +25,8 @@ export class Form extends React.Component {
         this.setState({ count: this.state.count + 1 })
     }
 
-    handleChangeName = (ev) => {
-        this.setState({ someName: ev.target.value })
+    handleSetName = (ev) => {
+        this.setState({ someName: this.inputRef.value });
     }
 
     render() {
@@ -37,8 +37,8 @@ export class Form extends React.Component {
             {<button style={{ color: 'blue' }} type="button" onClick={this.handleClick}> click </button>}
             <hr></hr>
             <p>Name: {this.state.someName}</p>
-            <input type="text"></input>
-            <button type="button" onClick={this.handleChangeName}> change name </button>
+            <input ref={el => this.inputRef = el} type="text" />
+            <button type="button" onClick={this.handleSetName}> click </button>
             <p>Array</p>
             {this.state.arr.map((item, idx) => {
                 return <div key={idx}>{item}</div>
